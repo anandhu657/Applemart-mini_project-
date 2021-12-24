@@ -11,8 +11,8 @@
 /* Navigation Bar */
 
 .navbar{
-    width: 1360px;
-    height: 75px;
+    width: 100%;
+    height: 65vh;
     margin: auto;
     position: relative;
 }
@@ -32,6 +32,10 @@
     float: left;
     padding-top: 15px;
     cursor: pointer;
+}
+
+.logo:hover{
+    color: #0eb963cb;
 }
 
 .menu{
@@ -89,7 +93,8 @@ ul li a:hover{
 ::placeholder{
     color: #fff;
     font-size: 15px;
-    font-weight: bold;
+    /* font-weight: bold; */
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .btn{
@@ -101,11 +106,13 @@ ul li a:hover{
     color: #fff;
     font-size: 15px;
     border-radius: 5px;
+    font-weight: bold;
 }
 
 .btn:hover{
     background: #ff0000;
     border: none;
+    transition: 0.5s ease-in;
 }
 
 .btn:focus{
@@ -118,7 +125,7 @@ ul li a:hover{
 
 .signin{
     height: 75px;
-    width: 156px;
+    width: 150px;
     float: left;
 }
 
@@ -132,7 +139,7 @@ ul li a:hover{
     position: absolute;
     top: -10px;
     width: 100%;
-    height: 50vh;
+    height: 65vh;
     z-index: -1;
 }
 
@@ -140,7 +147,7 @@ ul li a:hover{
     position: absolute;
     top: 0px;
     width: 100%;
-    height: 50vh;
+    height: 65vh;
     background: linear-gradient(to top, rgba(0,0,0,0.60)50%, rgba(0,0,0,0.60)50%);
     content: '';
     
@@ -148,8 +155,125 @@ ul li a:hover{
 
 .slideimg{
     width: 100%;
-    height: 50vh;
+    height: 65vh;
     display: none;
 }
 
+.content{
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin: auto;
+}
 
+.content-single-box{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.content-head-single{
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Lucida Sans';
+    margin-top: 65px;
+    word-spacing: -10px;
+}
+
+.img-single-div{
+    width: 100%;
+    height: auto;
+    position: relative;
+    
+}
+
+.content-img-single{
+    height: 190%;
+    margin: 45px 200px;
+}
+
+.buy-btn{
+    position: absolute;
+    top: 350px;
+    left: 1150px;
+    width: 100px;
+    height: 40px;
+    background: transparent;    
+    border: 3px solid #000;
+    color: #000;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.buy-btn:hover{
+    color: #fff;
+    background: #000;
+    border: none;
+    transition: 0.4s ease-in;
+}
+
+.content-double-box{
+    width: 48%;
+    height: 65vh;
+    overflow: hidden;
+    background-color: #352941;
+    margin: 25px 10px;
+    border-radius: 25px;
+    float: left;
+}
+
+.img-double-div{
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 33px;
+}
+
+.content-head-double{
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Lucida Sans';
+    margin-top: 50px;
+    word-spacing: -10px;
+    position: absolute;
+    top: -45px;
+    left: 200px;
+}
+
+.content-img-double{
+    width: 100%;
+    height: 60vh;
+}
+
+.buy-btn-double{
+    position: absolute;
+    top: 290px;
+    left: 280px;
+    width: 100px;
+    height: 40px;
+    background: transparent;    
+    border: 3px solid #000;
+    color: #000;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.buy-btn-double:hover{
+    color: #fff;
+    background: #000;
+    border: none;
+    transition: 0.4s ease-in;
+}
+
+.head-two{
+    left: 150px;
+}
+
+.box-two{
+   background-color: #182237;
+}

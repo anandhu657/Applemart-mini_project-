@@ -35,16 +35,46 @@
             </div>
 
             <div class="signin">
-                <a href="#"><button class="btn">Signin</button></a>
+                <a href="#"><button class="btn"><span></span>Signin</button></a>
+            </div>
+     
+            <div class="slideshow">
+                <img src="./images/slide1.jpg" alt="slide-image" class="slideimg">
+                <img src="./images/slide2.png" alt="slide-image" class="slideimg">
+                <img src="./images/slide3.jpg" alt="slide-image" class="slideimg">
+                <img src="./images/slide4.png" alt="slide-image" class="slideimg">
+            </div>
+        </div>      
+        <div class="content">
+
+            <div class="content-single-box">
+                <h2 class="content-head-single">iPhone 13 Pro</h2>
+                <div class="img-single-div">
+                    <img src="./images/iphone_13_pro.jpg" alt="iphone-13-pro" 
+                        class="content-img-single">
+                    
+                    <input type="submit" value="Buy" class="buy-btn">
+                </div>
             </div>
 
-        </div>
+            <div class="content-double-box">
+                <div class="img-double-div">
+                    <h2 class="content-head-double">iPhone 13</h2>
+                    <img src="./images/iphone_13.jpg" alt="iphone-13" 
+                    class="content-img-double">
+                    <input type="submit" value="Buy" class="buy-btn-double">
+                </div>
+            </div>
 
-        <div class="slideshow">
-            <img src="./images/navbar1.jpg" alt="slide-image" class="slideimg">
-            <img src="./images/navbar2.png" alt="slide-image" class="slideimg">
-            <img src="./images/navbar3.jpg" alt="slide-image" class="slideimg">
-            <img src="./images/navbar4.png" alt="slide-image" class="slideimg">
+            <div class="content-double-box box-two">
+                <div class="img-double-div">
+                    <h2 class="content-head-double head-two">iPhone 13 mini</h2>
+                    <img src="./images/iphone_13_mini.png" alt="iphone-13" 
+                    class="content-img-double">
+                    <input type="submit" value="Buy" class="buy-btn-double">
+                </div>
+            </div>
+
         </div>
 
     </div>
