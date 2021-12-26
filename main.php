@@ -50,18 +50,33 @@
             <div class="content-single-box">
                 <h2 class="content-head-single">iPhone 13 Pro</h2>
                 <div class="img-single-div">
-                    <img src="./images/iphone_13_pro.jpg" alt="iphone-13-pro" 
-                        class="content-img-single">
+                    <a href="#">
+                        <img src="./images/iphone_13_pro.jpg" alt="iphone-13-pro" 
+                            class="content-img-single">
+                    </a>
                     
                     <input type="submit" value="Buy" class="buy-btn">
                 </div>
             </div>
 
+            <div class="content-menu">
+                <ul class="menu-list">
+                    <li><a href="#">iPhone 13 pro</a></li>
+                    <li><a href="#">iPhone 13</a></li>
+                    <li><a href="#">iPhone 12 pro</a></li>
+                    <li><a href="#">iPhone 12</a></li>
+                    <li><a href="#">iPhone 11 pro</a></li>
+                    <li><a href="#">iPhone 11</a></li>
+                </ul>
+            </div>
+
             <div class="content-double-box">
                 <div class="img-double-div">
                     <h2 class="content-head-double">iPhone 13</h2>
-                    <img src="./images/iphone_13.jpg" alt="iphone-13" 
-                    class="content-img-double">
+                    <a href="#">
+                        <img src="./images/iphone_13.jpg" alt="iphone-13" 
+                        class="content-img-double">
+                    </a>
                     <input type="submit" value="Buy" class="buy-btn-double">
                 </div>
             </div>
@@ -69,15 +84,30 @@
             <div class="content-double-box box-two">
                 <div class="img-double-div">
                     <h2 class="content-head-double head-two">iPhone 13 mini</h2>
-                    <img src="./images/iphone_13_mini.png" alt="iphone-13" 
-                    class="content-img-double">
+                    <a href="#">
+                        <img src="./images/iphone_13_mini.png" alt="iphone-13" 
+                        class="content-img-double">
+                    </a>
                     <input type="submit" value="Buy" class="buy-btn-double">
                 </div>
             </div>
 
+            <div class="content-single-box">
+                <div class="image-single-div-two">
+                    <a href="#">
+                    <img src="./images/iphone_12_pro.jpg" alt="iphone_12_pro" 
+                    class="content-img-single-two">
+                    </a>
+
+                    <h2 class="content-head-single-two">iPhone 12 Pro</h2>
+
+                    <input type="submit" value="Buy" class="buy-btn-single-two">
+            </div>
+
+
         </div>
 
-    </div>
+</div>
 
 
 <!-- Javascript for slideshow -->
