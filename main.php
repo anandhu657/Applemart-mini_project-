@@ -70,28 +70,31 @@
                 </ul>
             </div>
 
-            <div class="content-double-box">
-                <div class="img-double-div">
-                    <h2 class="content-head-double">iPhone 13</h2>
-                    <a href="#">
+            <div class="content-double">
+                <div class="content-double-box">
+                    <div class="img-double-div">
+                        <h2 class="content-head-double">iPhone 13</h2>
                         <img src="./images/iphone_13.jpg" alt="iphone-13" 
                         class="content-img-double">
-                    </a>
-                    <input type="submit" value="Buy" class="buy-btn-double">
+                        <input type="submit" value="Buy" class="buy-btn-double">
+                        <a href="#">
+                            <p class="specification">Specifications</p>
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="content-double-box box-two">
-                <div class="img-double-div">
-                    <h2 class="content-head-double head-two">iPhone 13 mini</h2>
-                    <a href="#">
+                <div class="content-double-box box-two">
+                    <div class="img-double-div">
+                        <h2 class="content-head-double head-two">iPhone 13 mini</h2>
                         <img src="./images/iphone_13_mini.png" alt="iphone-13" 
                         class="content-img-double">
-                    </a>
-                    <input type="submit" value="Buy" class="buy-btn-double">
+                        <input type="submit" value="Buy" class="buy-btn-double">
+                        <a href="#">
+                            <p class="specification">Specifications</p>
+                        </a>
+                    </div>
                 </div>
             </div>
-
             <div class="content-single-box">
                 <div class="image-single-div-two">
                     <a href="#">
