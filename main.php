@@ -115,7 +115,7 @@
                 <div class="content-flex-box">
                     <div class="content-flex-image">
                         <a href="#">
-                        <img src="./images/iphone_12_1.jpeg" alt="iphone-12" class="flex-image">
+                        <img src="./images/iphone_13_pro_max.jpeg" alt="iphone-13-pro-max" class="flex-image">
                         <!-- <h2 class="flex-head">iPhone 12</h2> -->
                         </a>
                         <!-- <input type="submit" value="Buy" class="flex-buy"> -->
@@ -125,7 +125,7 @@
                 <div class="content-flex-box">
                     <div class="content-flex-image">
                         <a href="#">
-                        <img src="./images/iphone_12_mini.jpeg" alt="iphone-12-mini" class="flex-image">
+                        <img src="./images/iphone_12_pro_max.jpeg" alt="iphone-12-pro-max" class="flex-image">
                         <!-- <h2 class="flex-head">12 mini</h2> -->
                         </a>
                         <!-- <input type="submit" value="Buy" class="flex-buy"> -->
@@ -135,7 +135,7 @@
                 <div class="content-flex-box">
                     <div class="content-flex-image">
                         <a href="#">
-                        <img src="./images/iphone_13_pro_max.jpeg" alt="iphone-13-pro-max" class="flex-image">
+                        <img src="./images/iphone_11_pro_max.jpeg" alt="iphone-11-pro-max" class="flex-image">
                         <!-- <h2 class="flex-head">13 pro max</h2> -->
                         </a>
                         <!-- <input type="submit" value="Buy" class="flex-buy"> -->
