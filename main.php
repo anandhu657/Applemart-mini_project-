@@ -12,7 +12,8 @@
 <body>
     
     <div class="main">
-
+        
+        <form action="#" method="POST">
         <div class="navbar">
             
             <div class="icon">
@@ -30,12 +31,12 @@
             </div>
 
             <div class="search">
-                <input type="text" class="srch" name="" placeholder="Type To Search">
-                <a href="#"><button class="btn">Search</button></a>
+                <input type="text" class="srch" name="search" placeholder="Type To Search">
+                <button class="btn">Search</button>
             </div>
 
             <div class="signin">
-                <a href="#"><button class="btn"><span></span>Signin</button></a>
+                <button class="btn" formaction="./signin.php">Signin</button>
             </div>
      
             <div class="slideshow">
@@ -148,6 +149,7 @@
         <div class="footer">
             
         </div>
+        </form>
 
     </div>
 

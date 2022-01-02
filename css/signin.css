@@ -6,6 +6,10 @@
 .container{
     width: 100%;
     height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+    url(../images/signin_page.jpg);
+    background-position: center;
+    background-size: cover;
 }
 
 .form-container{
@@ -21,9 +25,10 @@
 .form-head{
     position: absolute;
     font-family: 'Arial';
-    top: 74px;
+    top: 25px;
     left: 141px;
-    display: none;
+    color: whitesmoke;
+    
 }
 
 .signin-form{
@@ -42,7 +47,8 @@
     padding-left: 5px;
     margin-bottom: 25px;
     border-radius: 10px;
-    border: 1px solid #8e8eb9;
+    /* border: 1px solid #8e8eb9; */
+    border: none;
     cursor: pointer;
 }
 
@@ -55,6 +61,9 @@
     top: 192px;
     left: 111px;
     text-decoration: none;
+    color: white;
+    font-size: 16px;
+    /* font-weight: bold; */
 }
 
 .forgot-link:hover{
@@ -62,7 +71,7 @@
 }
 
 .form-submit{
-    background-color: #1877f2;
+    background-color: #dd3439;
     margin-top: 30px;
     color: #fff;
     font-size: 20px;
@@ -82,71 +91,10 @@ hr{
     width: 300px;
     height: 34px;
     border-radius: 10px;
-    background-color: #42b72a;
+    background-color: #c29d4f;
     border: none;
     color: #fff;
     font-weight: bold;
     font-size: 15px;
     cursor: pointer;
-}
-
-
-
-/* SIGNUP PAGE */
-
-.signup-container{
-    position: absolute;
-    top: 70px;
-    left: 171px;
-    width: 75%;
-    height: 80vh;
-    border: 1px solid #f3c4c4;
-    border-radius: 5px;
-}
-
-.signup-form{
-    position: relative;
-    width: 100%;
-    height: 80vh;
-}
-
-.user-name{
-    position: relative;
-    width: 100%;
-    height: 16%;
-}
-
-.user-name input{
-    width: 395px;
-    height: 40px;
-    position: relative;
-    top: 28px;
-    left: 92px;
-    margin-left: 24px;
-    border: 1px solid #f3c4c4;
-    border-radius: 7px;
-    padding-left: 5px;
-    font-size: 20px;
-}
-
-.user-username{
-    position: relative;
-    width: 100%;
-    height: 12%;
-}
-
-.user-username input{
-    width: 824px;
-    height: 40px;
-    position: relative;
-    top: 8px;
-    left: 116px;
-    border: 1px solid #f3c4c4;
-    border-radius: 7px;
-    padding-left: 5px;
-    font-size: 20px;
-}
-
-.signup-form input::placeholder{
-    font-size: 18px;
 }

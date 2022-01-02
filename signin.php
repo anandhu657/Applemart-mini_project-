@@ -19,7 +19,7 @@
                 <a href="#" class="forgot-link">Forgotten password?</a>
                 <input type="submit" name="submit" value="Log In" class="form-submit">
                 <hr>
-                <button class="form-create">Create New Account</button>
+                <button class="form-create" formaction="./signup.php">Create New Account</button>
             </form>
         </div>
     </div>

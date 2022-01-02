@@ -10,16 +10,16 @@
 <body>
     
     <div class="container">
-        <div class="signup-container">
-            <form action="#" class="signup-form" method="POST">
-                <div class="user-name">
-                    <input type="text" name="fname" placeholder="First name" max="15">
-                    <input type="text" name="lname" placeholder="Last name">
-                </div>
-                <div class="user-username">
-                    <input type="email" name="email" 
-                    placeholder="Enter your username (gmail,outlook,yahoo)">
-                </div>
+        <div class="form-container">
+        <h2 class="form-head">Signup</h2>
+            <form action="#" class="signin-form" method="POST">
+                <input type="text" name="fname" placeholder="Fullname" max="15" required>
+                <input type="text" name="uname" placeholder="Username" max="15" required>
+                <input type="number" name="phn" placeholder="Phone Number" max="12" required>
+                <input type="password" name="pass1" placeholder="Password" required>
+                <input type="password" name="pass2" placeholder="Confirm Password" required>
+                <input type="submit" name="submit" value="Signup" class="form-submit" 
+                formaction="./signin.php">
             </form>
         </div>
     </div>
