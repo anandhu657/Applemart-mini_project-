@@ -1,3 +1,9 @@
+<?php
+
+    require_once('../private/initialize.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +16,18 @@
     
 </head>
 <body>
+
+<?php
+
+    session_start();
+    $id = $_SESSION['user_id'];
+    $row = find_user_info($id);
+
+?>
     
     <div class="main">
         
-        <form action="#" method="POST">
+        <form action="product-page.php" method="GET">
         <div class="navbar">
             
             <div class="icon">
@@ -22,21 +36,22 @@
 
             <div class="menu">
                 <ul>
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">SERVICES</a></li>
-                    <li><a href="#">CONTACT</a></li>
-                    <li><a href="#">HELP</a></li>
-                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="https://www.apple.com/in/">HOME</a></li>
+                    <li><a href="https://www.apple.com/in/search/services?src=globalnav">SERVICES</a></li>
+                    <li><a href="https://www.apple.com/in/contact/">CONTACT</a></li>
+                    <li><a href="https://www.apple.com/in/search/help?src=globalnav">HELP</a></li>
+                    <li><a href="https://www.apple.com/in/search/about-apple?src=serp">ABOUT</a></li>
                 </ul>
             </div>
 
             <div class="search">
                 <input type="text" class="srch" name="search" placeholder="Type To Search">
-                <button class="btn">Search</button>
+                <button class="btn" formaction="product-page.php" name="button"
+                formtarget="_blank">Search</button>
             </div>
 
             <div class="signin">
-                <button class="btn" formaction="./signin.php">Signin</button>
+                <button class="btn" formaction="./logout.php">Logout</button>
             </div>
      
             <div class="slideshow">
@@ -52,23 +67,28 @@
             <div class="content-single-box">
                 <h2 class="content-head-single">iPhone 13 Pro</h2>
                 <div class="img-single-div">
-                    <a href="#">
+                    <?php
+                        $image = 'iphone 13 pro';
+                    ?>
+                    <a href="<?php echo 'product-page.php?image='.$image.'&id='.$id; ?> "
+                    target="_blank">
                         <img src="./images/iphone_13_pro.jpg" alt="iphone-13-pro" 
                             class="content-img-single">
                     </a>
                     
-                    <input type="submit" value="Buy" class="buy-btn">
+                    <button type="submit" value="<?php echo $image; ?>" formtarget="_blank" 
+                    formaction="form.php" name="button" class="buy-btn">Buy</button>
                 </div>
             </div>
 
             <div class="content-menu">
                 <ul class="menu-list">
-                    <li><a href="#">iPhone 13 pro</a></li>
-                    <li><a href="#">iPhone 13</a></li>
-                    <li><a href="#">iPhone 12 pro</a></li>
-                    <li><a href="#">iPhone 12</a></li>
-                    <li><a href="#">iPhone 11 pro</a></li>
-                    <li><a href="#">iPhone 11</a></li>
+                    <li><a href="product-page.php?image=iphone 13 pro" target="_blank">iPhone 13 pro</a></li>
+                    <li><a href="product-page.php?image=iphone 13" target="_blank">iPhone 13</a></li>
+                    <li><a href="product-page.php?image=iphone 12 pro" target="_blank">iPhone 12 pro</a></li>
+                    <li><a href="product-page.php?image=iphone 12" target="_blank">iPhone 12</a></li>
+                    <li><a href="product-page.php?image=iphone 11 pro" target="_blank">iPhone 11 pro</a></li>
+                    <li><a href="product-page.php?image=iphone 11" target="_blank">iPhone 11</a></li>
                 </ul>
             </div>
 
@@ -78,8 +98,15 @@
                         <h2 class="content-head-double">iPhone 13</h2>
                         <img src="./images/iphone_13.jpg" alt="iphone-13" 
                         class="content-img-double">
-                        <input type="submit" value="Buy" class="buy-btn-double">
-                        <a href="#">
+                        
+                        <?php
+                            $image = 'iphone 13';
+                        ?>
+
+                        <button type="submit" value="<?php echo $image; ?>" formtarget="_blank"
+                        name="button" formaction="form.php" class="buy-btn-double">Buy</button>
+                        <a href="<?php echo 'product-page.php?image='.$image.'&id='.$id; ?>" 
+                        target="_blank">
                             <p class="specification">Specifications</p>
                         </a>
                     </div>
@@ -90,8 +117,15 @@
                         <h2 class="content-head-double head-two">iPhone 13 mini</h2>
                         <img src="./images/iphone_13_mini.png" alt="iphone-13" 
                         class="content-img-double">
-                        <input type="submit" value="Buy" class="buy-btn-double">
-                        <a href="#">
+                        
+                        <?php
+                            $image = 'iphone 13 mini';
+                        ?>
+
+                        <button type="submit" value="<?php echo $image; ?>" formtarget="_blank"
+                        class="buy-btn-double" name="button" formaction="form.php">Buy</button>
+                        <a href="<?php echo 'product-page.php?image='.$image.'&id='.$id; ?>"
+                        target="_blank">
                             <p class="specification">Specifications</p>
                         </a>
                     </div>
@@ -100,21 +134,32 @@
 
             <div class="content-single-box">
                 <div class="image-single-div-two">
-                    <a href="#">
+
+                        <?php
+                            $image = 'iphone 12 pro';
+                        ?>
+
+                    <a href="<?php echo 'product-page.php?image='.$image.'&id='.$id; ?>" target="_blank">
                     <img src="./images/iphone_12_pro.jpg" alt="iphone_12_pro" 
                     class="content-img-single-two">
                     </a>
 
                     <h2 class="content-head-single-two">iPhone 12 Pro</h2>
 
-                    <input type="submit" value="Buy" class="buy-btn-single-two">
+                    <button type="submit" value="<?php echo $image; ?>" formtarget="_blank"
+                    name="button" formaction="form.php" class="buy-btn-single-two">Buy</button>
                 </div>
             </div>
 
             <div class="content-flex">
                 <div class="content-flex-box">
                     <div class="content-flex-image">
-                        <a href="#">
+
+                        <?php
+                            $image = 'iphone 13 pro max';
+                        ?>
+
+                        <a href="<?php echo 'product-page.php?image='.$image.'&id='.$id; ?>" target="_blank">
                         <img src="./images/iphone_13_pro_max.jpeg" alt="iphone-13-pro-max" class="flex-image">
                         <!-- <h2 class="flex-head">iPhone 12</h2> -->
                         </a>
@@ -124,7 +169,13 @@
 
                 <div class="content-flex-box">
                     <div class="content-flex-image">
-                        <a href="#">
+
+                        <?php
+                            $image = 'iphone 12 pro max';
+                        ?>
+
+                        <a href="<?php echo 'product-page.php?image='.$image.'&id='.$id; ?>" target="_blank">
+                            
                         <img src="./images/iphone_12_pro_max.jpeg" alt="iphone-12-pro-max" class="flex-image">
                         <!-- <h2 class="flex-head">12 mini</h2> -->
                         </a>
@@ -134,7 +185,12 @@
 
                 <div class="content-flex-box">
                     <div class="content-flex-image">
-                        <a href="#">
+
+                        <?php
+                            $image = 'iphone 11 pro max';
+                        ?>
+    
+                        <a href="<?php echo 'product-page.php?image='.$image.'&id='.$id; ?>" target="_blank">
                         <img src="./images/iphone_11_pro_max.jpeg" alt="iphone-11-pro-max" class="flex-image">
                         <!-- <h2 class="flex-head">13 pro max</h2> -->
                         </a>

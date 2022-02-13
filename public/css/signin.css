@@ -98,3 +98,16 @@ hr{
     font-size: 15px;
     cursor: pointer;
 }
+
+.already{
+    position: absolute;
+    bottom: 42px;
+    left: 610px;
+    color: white;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

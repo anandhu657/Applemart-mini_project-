@@ -1,3 +1,9 @@
+<?php 
+
+    require_once('../private/initialize.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +14,16 @@
     <link rel="stylesheet" href="./css/form.css">
 </head>
 <body>
+    <?php
+        $id = $_GET['button'];
+        $results = find_product_by_id($id);
+    ?>
     <div class="container">
         
 
             <div class="user-details">
                 <h4>Add an address</h4>
-                <form action="#">
+                <form action="#" autocomplete="off">
                     <div class="input-field">
                         <input type="text" placeholder="Name" name="fname" required>
                         <input type="number" placeholder="10-digit Number" name="phn" required>
@@ -41,7 +51,7 @@
                         <input type="number" placeholder="Alternate Phone" name="alt">
                     </div>
                     <div class="delivery-spot">
-                        <input type="radio" value="home" name="type">
+                        <input type="radio" value="home" name="type" checked>
                         <label for="type">Home (All day delivery) </label>
                         <input type="radio" value="work" name="type">
                         <label for="type">Work (Delivery between 10 AM - 5 PM)</label>
@@ -52,23 +62,36 @@
                 </form>
             </div>
 
+            <?php
+                if(mysqli_num_rows($results) > 0){
+            ?>
+
             <div class="phn-price-details">
                 <h3>Price Details</h3>
                 <div class="phn-price">
-                    <h4>Iphone 13 pro max</h4>
+                    <?php
+                        $row = mysqli_fetch_array($results);
+                    ?>
+                    <h4><?php echo $row['model_name']; ?></h4>
                     <div class="prices">
                         <p>Price</p>
-                        <p>40000</p>
+                        <p><?php echo $row['price']; ?></p>
                         <p>Delivery Charge</p>
                         <p>FREE</p>
                     </div>
                 </div>
                 <div class="total-price">
                     <h4>Total Payable</h3>
-                    <h4>₹40000</h3>
+                    <h4>₹<?php echo $row['price']; ?></h3>
                 </div>
+    
             </div>
-        
+            <?php
+            }
+            else{
+                echo "no result";
+            }
+            ?>
     </div>
 </body>
 </html>

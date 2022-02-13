@@ -148,3 +148,9 @@ form{
 .total-price h4:nth-child(even){
     text-align: right;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

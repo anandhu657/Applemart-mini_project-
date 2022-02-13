@@ -1,3 +1,9 @@
+<?php
+
+    require_once('../private/initialize.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,26 +14,50 @@
     <link rel="stylesheet" href="css/product.css">
 </head>
 <body>
+    <?php
+        if(count($_GET) > 0){
+            if(isset($_GET['image'])){
+                $name = $_GET['image'];
+                $rows = find_product_by_name($name);
+            }
+
+            if(isset($_GET['button'])){
+                $name = $_GET['search'];
+                $rows = find_product_by_name($name);
+            }
+        }
+        else{
+            echo "Oops 404 Error found";
+        }
+    ?>
+    
+    <?php 
+    foreach($rows as $row) : 
+    ?>
     <div class="container">
         <div class="image-sec">
-            <img src="images/iphone_12_mini.jpeg" alt="">
+            <img src="admin/img/<?php echo $row['image']; ?>" alt="iphone">
         </div>
         <div class="details">
             <div class="product-name">
-                <h1>Apple Iphone 13 PRO MAX</h1>
+                <h1>Apple <?php echo $row['model_name']; ?></h1>
                 <a href="https://www.apple.com/in/">Visit the site</a>
             </div>
             <hr>
             <div class="product-price">
                 <div class="price-details">
-                    <h3>MRP: ₹4000</h3>
+                    <h2>MRP: ₹<?php echo $row['price']; ?></h2>
                     <p><i>Inclusive of all taxes</i></p>
                     <p><strong>EMI</strong> starts at ₹1,789. No Cost EMI available EMI</p>
                     <p>7-days replacement only.</p>
                     <strong>FREE DELIVERY</strong>
                 </div>
                 <div class="price-button">
-                    <button>BUY</button>
+                    <form action="form.php">
+                        <input type="hidden" value="<?php echo $row['model_name']; ?>">
+                        <button value="<?php echo $row['pro_id']; ?>" 
+                        name="button" formtarget="_blank">BUY</button>
+                    </form>
                 </div>
             </div>
             <hr>
@@ -35,35 +65,39 @@
                 <table>
                     <tr>
                         <th>Model</th>
-                        <td>Iphone 13  pro max</td>
+                        <td><?php echo $row['model_name']; ?></td>
                     </tr>
                     <tr>
                         <th>color</th>
-                        <td>Red</td>
+                        <td><?php echo $row['color']; ?></td>
                     </tr>
                     <tr>
                         <th>Display</th>
-                        <td>6.1-inch XDR display</td>
+                        <td><?php echo $row['display']; ?></td>
                     </tr>
                     <tr>
                         <th>Chip</th>
-                        <td>A12 Bionic chip</td>
+                        <td><?php echo $row['chip']; ?></td>
                     </tr>
                     <tr>
                         <th>Memory</th>
-                        <td>64GB</td>
+                        <td><?php echo $row['memory']; ?> GB</td>
                     </tr>
                     <tr>
                         <th>Camera</th>
-                        <td>Dual 12MP camera</td>
+                        <td><?php echo $row['camera']; ?></td>
                     </tr>
                     <tr>
                         <th>Front camera</th>
-                        <td>12MP TrueDepth camera</td>
+                        <td><?php echo $row['front_camera']; ?></td>
                     </tr>
                 </table>
             </div>
         </div>
     </div>
+    <div class="border">
+        <hr>
+    </div>
+    <?php endforeach; ?>
 </body>
 </html>

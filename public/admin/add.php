@@ -35,6 +35,10 @@
                 <div class="input-submit">
                     <input type="submit" value="submit" name="submit">
                 </div>
+                <div class="home-link">
+                    <a href="../main.php">Go to Home</a>
+                    <a href="admin.php">Go Back</a>
+                </div>
             </form>
         </div>
     </div>

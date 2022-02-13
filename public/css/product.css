@@ -79,3 +79,7 @@ th{
     text-align: right;
 }
 
+.border hr{
+    border: 2px solid black;
+}
+

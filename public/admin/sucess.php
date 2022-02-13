@@ -6,14 +6,16 @@
 
     if(isset($_POST['submit'])) {
 
-        $model = $_POST['model'];
-        $price = $_POST['price'];
-        $color = $_POST['color'];
-        $display = $_POST['display'];
-        $chip = $_POST['chip'];
-        $memory = $_POST['memory'];
-        $camera = $_POST['camera'];
-        $fcamera = $_POST['fcamera'];
+
+        $sub = [];
+        $sub['model'] = $_POST['model'];
+        $sub['price'] = $_POST['price'];
+        $sub['color'] = $_POST['color'];
+        $sub['display'] = $_POST['display'];
+        $sub['chip'] = $_POST['chip'];
+        $sub['memory'] = $_POST['memory'];
+        $sub['camera'] = $_POST['camera'];
+        $sub['fcamera'] = $_POST['fcamera'];
 
         if($_FILES["image"]["error"] === 4) {
             echo
@@ -43,8 +45,9 @@
                 $newImageName .= '.' .$imageExtension;
 
                 move_uploaded_file($tmpName, 'img/' . $newImageName);
-                $query = "INSERT INTO `product` (`model_name`, `price`, `color`, `display`, `chip`, `memory`, `camera`, `front_camera`, `image`) VALUES('$model', '$price', '$color', '$display', '$chip', '$memory', '$camera', '$fcamera', '$newImageName')";
-                $result = mysqli_query($db, $query);
+
+                $result = insert_product_values($sub, $newImageName);
+                
                 if($result) {
                     echo
                     "<center><h1> PRODUCT ADDED SUCCESSFULLY </h1>
