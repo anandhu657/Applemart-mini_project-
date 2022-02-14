@@ -3,6 +3,10 @@
     require_once('../private/initialize.php');
     require_once('../private/shared_folder/navbar.php');
 
+    session_start();
+    $sid = $_SESSION['user_id'];
+    $row = find_user_info($sid)
+
 ?>
 
 <!DOCTYPE html>
@@ -16,8 +20,9 @@
 </head>
 <body>
     <?php
-        $id = $_GET['button'];
-        $results = find_product_by_id($id);
+        $pid = $_GET['button'];
+        $results = find_product_by_id($pid);
+
     ?>
     <div class="container">
         
@@ -26,19 +31,25 @@
                 <h4>Add an address</h4>
                 <form action="#" autocomplete="off">
                     <div class="input-field">
-                        <input type="text" placeholder="Name" name="fname" required>
-                        <input type="number" placeholder="10-digit Number" name="phn" required>
+                        <input type="text" placeholder="Name" name="fname" required
+                        value="<?php echo $row['username']; ?>">
+                        <input type="number" placeholder="10-digit Number" name="phn" required
+                        value="<?php echo $row['phone']; ?>">
                     </div>
                     <div class="input-field">
-                        <input type="number" placeholder="Pincode" name="pin" required>
-                        <input type="text" placeholder="Locality" name="locality" required>
+                        <input type="number" placeholder="Pincode" name="pin" required
+                        value="<?php echo $row['pincode']; ?>">
+                        <input type="text" placeholder="Locality" name="locality" required
+                        value="<?php echo $row['locality']; ?>">
                     </div>
                     <div>
                         <input type="text" placeholder="Address (Area and Street)" name="address" 
-                        class="address-field" required>
+                        class="address-field" 
+                        value="<?php echo $row['address']; ?>" required>
                     </div>
                     <div class="input-field">
-                        <input type="text" placeholder="City/District/Town" name="place" required>
+                        <input type="text" placeholder="City/District/Town" name="place" required
+                        value="<?php echo $row['city']; ?>">
                         <select name="state" class="option-field">
                             <option value="kerala">Kerala</option>
                             <option value="tamilnadu">Tamilnadu</option>

@@ -19,7 +19,7 @@
             header("Location: admin/admin.php");
         }
         else{
-            header("Location: ../signin.php");
+            header("Location: ../index.php");
         }
     }
 
