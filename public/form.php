@@ -1,6 +1,7 @@
 <?php 
 
     require_once('../private/initialize.php');
+    require_once('../private/shared_folder/navbar.php');
 
 ?>
 
@@ -93,5 +94,10 @@
             }
             ?>
     </div>
+    <?php
+
+        require_once('../private/shared_folder/footer.php');
+            
+    ?>
 </body>
 </html>

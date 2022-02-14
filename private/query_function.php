@@ -50,4 +50,22 @@ function insert_product_values($sub, $newImageName) {
     $result = mysqli_query($db, $sql);
     return $result;
 }
+
+function update_product_values($sub, $newImageName) {
+    global $db;
+
+    $sql = "UPDATE product set model_name=";
+    $sql .= "'" . $sub['model'] . "', price=";
+    $sql .= "'" . $sub['price'] . "', color=";
+    $sql .= "'" . $sub['color'] . "', display=";
+    $sql .= "'" . $sub['display'] . "', chip=";
+    $sql .= "'" . $sub['chip'] . "', memory=";
+    $sql .= "'" . $sub['memory'] . "', camera=";
+    $sql .= "'" . $sub['camera'] . "', front_camera=";
+    $sql .= "'" . $sub['fcamera'] . "', image=";
+    $sql .= "'" . $newImageName . "'";
+    $sql .= " WHERE pro_id='" .$sub['pro_id'] . "'";
+    $result = mysqli_query($db, $sql);
+    return $result;
+}
 ?>

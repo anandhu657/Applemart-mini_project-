@@ -1,6 +1,7 @@
 <?php
 
     require_once('../private/initialize.php');
+    require_once('../private/shared_folder/navbar.php');
 
 ?>
 
@@ -56,7 +57,7 @@
                     <form action="form.php">
                         <input type="hidden" value="<?php echo $row['model_name']; ?>">
                         <button value="<?php echo $row['pro_id']; ?>" 
-                        name="button" formtarget="_blank">BUY</button>
+                        name="button">BUY</button>
                     </form>
                 </div>
             </div>
@@ -99,5 +100,11 @@
         <hr>
     </div>
     <?php endforeach; ?>
+
+    <?php
+
+        require_once('../private/shared_folder/footer.php');
+        
+    ?>
 </body>
 </html>

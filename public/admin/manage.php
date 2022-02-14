@@ -61,8 +61,8 @@
             <td><?php echo $row['camera']; ?></td>
             <td><?php echo $row['front_camera']; ?></td>
             <td><?php echo $row['image']; ?></td>
-            <td><a href="<?php echo delete.php?id=$row['pro_id']; ?>" >Edit</a></td>
-            <td></td>
+            <td><a href="<?php echo 'edit.php?id='.$row['pro_id']; ?>" >Edit</td>
+            <td><a href="<?php echo 'delete.php?id='.$row['pro_id']; ?>" >Delete</a></td>
         </tr>
         <?php
         $i++;
