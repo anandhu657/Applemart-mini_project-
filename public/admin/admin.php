@@ -33,6 +33,7 @@
     <form>
         <button formaction="add.php">Add Product</button>
         <button formaction="manage.php">Manage Product</button>
+        <button formaction="delivery_view.php">View Orders</button>
     </form>
     <a href="../main.php">Go to main page</a>
 </body>

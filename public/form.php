@@ -29,7 +29,7 @@
 
             <div class="user-details">
                 <h4>Add an address</h4>
-                <form action="#" autocomplete="off">
+                <form action="delivery.php" autocomplete="off" method="POST">
                     <div class="input-field">
                         <input type="text" placeholder="Name" name="fname" required
                         value="<?php echo $row['username']; ?>">
@@ -69,7 +69,7 @@
                         <label for="type">Work (Delivery between 10 AM - 5 PM)</label>
                     </div>
                     <div class="submit">
-                        <input type="submit" value="Deliver Here">
+                        <button name="submit" value='submit'>Deliver Here</button>
                     </div>
                 </form>
             </div>

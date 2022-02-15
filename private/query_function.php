@@ -68,4 +68,26 @@ function update_product_values($sub, $newImageName) {
     $result = mysqli_query($db, $sql);
     return $result;
 }
+
+function insert_delivery_details($sub) {
+    global $db;
+
+    $sql = "INSERT INTO delivery_details ";
+    $sql .= "(user_id, name, phn_num, pincode, locality, address, city, state, landmark, alt_phn, delivery_point) ";
+    $sql .= "VALUES (";
+    $sql .= "'" . $sub['user_id'] . "',";
+    $sql .= "'" . $sub['name'] . "',";
+    $sql .= "'" . $sub['phn'] . "',";
+    $sql .= "'" . $sub['pin'] . "',";
+    $sql .= "'" . $sub['locality'] . "',";
+    $sql .= "'" . $sub['address'] . "',";
+    $sql .= "'" . $sub['place'] . "',";
+    $sql .= "'" . $sub['state'] . "',";
+    $sql .= "'" . $sub['landmark'] . "',";
+    $sql .= "'" . $sub['alt_phn'] . "',";
+    $sql .= "'" . $sub['type'] . "'";
+    $sql .= ")";
+    $result = mysqli_query($db, $sql);
+    return $result;
+}
 ?>
