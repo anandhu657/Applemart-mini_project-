@@ -22,6 +22,7 @@
     <?php
         $pid = $_GET['button'];
         $results = find_product_by_id($pid);
+        $rows = mysqli_fetch_array($results);
 
     ?>
     <div class="container">
@@ -38,9 +39,9 @@
                     </div>
                     <div class="input-field">
                         <input type="number" placeholder="Pincode" name="pin" required
-                        value="<?php echo $row['pincode']; ?>">
+                        value="">
                         <input type="text" placeholder="Locality" name="locality" required
-                        value="<?php echo $row['locality']; ?>">
+                        value="">
                     </div>
                     <div>
                         <input type="text" placeholder="Address (Area and Street)" name="address" 
@@ -49,7 +50,7 @@
                     </div>
                     <div class="input-field">
                         <input type="text" placeholder="City/District/Town" name="place" required
-                        value="<?php echo $row['city']; ?>">
+                        value="">
                         <select name="state" class="option-field">
                             <option value="kerala">Kerala</option>
                             <option value="tamilnadu">Tamilnadu</option>
@@ -69,7 +70,7 @@
                         <label for="type">Work (Delivery between 10 AM - 5 PM)</label>
                     </div>
                     <div class="submit">
-                        <button name="submit" value='submit'>Deliver Here</button>
+                        <button name="submit" formaction="<?php echo 'delivery.php?pro_id='.$pid; ?>">Deliver Here</button>
                     </div>
                 </form>
             </div>
@@ -81,20 +82,17 @@
             <div class="phn-price-details">
                 <h3>Price Details</h3>
                 <div class="phn-price">
-                    <?php
-                        $row = mysqli_fetch_array($results);
-                    ?>
-                    <h4><?php echo $row['model_name']; ?></h4>
+                    <h4><?php echo $rows['model_name']; ?></h4>
                     <div class="prices">
                         <p>Price</p>
-                        <p><?php echo $row['price']; ?></p>
+                        <p><?php echo $rows['price']; ?></p>
                         <p>Delivery Charge</p>
                         <p>FREE</p>
                     </div>
                 </div>
                 <div class="total-price">
                     <h4>Total Payable</h3>
-                    <h4>₹<?php echo $row['price']; ?></h3>
+                    <h4>₹<?php echo $rows['price']; ?></h3>
                 </div>
     
             </div>

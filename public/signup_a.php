@@ -14,7 +14,7 @@
         
     }
     elseif(isset($_POST['submit'])){
-        $query = "INSERT INTO register(username, email, phone, passwords, city, address ,locality, pincode) VALUES ('$fname', '$email', '$phn', 'md5($pass1)', '$city', '$address', '$locality', '$pincode')";
+        $query = "INSERT INTO register(username, email, phone, passwords, address) VALUES ('$fname', '$email', '$phn', 'md5($pass1)','$address')";
         $sql = mysqli_query($db, $query) or die("Could Not Perform the query");
         header("Location: ../index.php?status=success");
     }

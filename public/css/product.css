@@ -67,6 +67,11 @@ body{
     cursor: pointer;
 }
 
+.cart{
+    position: absolute;
+    display: block;
+}
+
 .price-button button:hover{
     background-color: rgb(44, 40, 40);
 }

@@ -3,6 +3,10 @@
     require_once('../private/initialize.php');
     require_once('../private/shared_folder/navbar.php');
 
+    session_start();
+
+    $uid = $_SESSION['user_id'];
+
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +29,11 @@
             if(isset($_GET['button'])){
                 $name = $_GET['search'];
                 $rows = find_product_by_name($name);
+            }
+
+            if(isset($_GET['button1'])){
+                $id = $_GET['search'];
+                $rows = find_product_by_id($id);
             }
         }
         else{
@@ -58,6 +67,8 @@
                         <input type="hidden" value="<?php echo $row['model_name']; ?>">
                         <button value="<?php echo $row['pro_id']; ?>" 
                         name="button">BUY</button>
+                        <!-- <button name="button1" class="cart" value="<?php echo $row['pro_id']; ?>"
+                        formaction="<?php echo 'cart.php'; ?>">Add to cart</button> -->
                     </form>
                 </div>
             </div>

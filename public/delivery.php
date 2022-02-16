@@ -46,8 +46,12 @@
         $sub['type'] = $_POST['type'];
         $sub['alt_phn'] = $_POST['alt'];
         $sub['landmark'] = $_POST['land'];
+        $sub['pro_id'] = $_GET['pro_id'];
+
 
         $result = insert_delivery_details($sub);
+
+
 
         if($result) {
     

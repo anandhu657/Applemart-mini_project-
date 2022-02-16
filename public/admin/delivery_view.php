@@ -32,6 +32,7 @@
     <table>
         <tr>
             <th>Delivery ID</th>
+            <th>Product</th>
             <th>User ID</th>
             <th>Name</th>
             <th>Address</th>
@@ -55,6 +56,9 @@
 
         <tr>
             <td><?php echo $row['delivery_id']; ?></td>
+            <td>
+                <?php echo $row['pro_id']; ?>
+            </td>
             <td><?php echo $row['user_id']; ?></td>
             <td><?php echo $row['name']; ?></td>
             <td><?php echo $row['address']; ?></td>

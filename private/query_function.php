@@ -73,8 +73,9 @@ function insert_delivery_details($sub) {
     global $db;
 
     $sql = "INSERT INTO delivery_details ";
-    $sql .= "(user_id, name, phn_num, pincode, locality, address, city, state, landmark, alt_phn, delivery_point) ";
+    $sql .= "(pro_id, user_id, name, phn_num, pincode, locality, address, city, state, landmark, alt_phn, delivery_point) ";
     $sql .= "VALUES (";
+    $sql .= "'" . $sub['pro_id'] . "',";
     $sql .= "'" . $sub['user_id'] . "',";
     $sql .= "'" . $sub['name'] . "',";
     $sql .= "'" . $sub['phn'] . "',";
@@ -86,6 +87,21 @@ function insert_delivery_details($sub) {
     $sql .= "'" . $sub['landmark'] . "',";
     $sql .= "'" . $sub['alt_phn'] . "',";
     $sql .= "'" . $sub['type'] . "'";
+    $sql .= ")";
+    $result = mysqli_query($db, $sql);
+    return $result;
+}
+
+function insert_product_cart($sub, $uid){
+    global $db;
+
+    $sql = "INSERT INTO cart ";
+    $sql .= "(user_id, pro_id, pro_name, pro_price) ";
+    $sql .= "VALUES (";
+    $sql .= "'" . $uid . "',";
+    $sql .= "'" . $sub['pro_id'] . "',";
+    $sql .= "'" . $sub['model_name'] . "',";
+    $sql .= "'" . $sub['price'] . "'";
     $sql .= ")";
     $result = mysqli_query($db, $sql);
     return $result;
