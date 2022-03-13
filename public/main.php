@@ -2,6 +2,8 @@
 
     require_once('../private/initialize.php');
 
+    session_start();
+    $id = $_SESSION['user_id'];
     $sql = "SELECT * FROM product";
     $result = mysqli_query($db,$sql);
 
@@ -16,9 +18,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body>
     
@@ -29,23 +32,50 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ml-3">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">SERVICES</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Disabled</a>
+        <a class="nav-link" href="#">CONTACT</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">HELP</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">ABOUT</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="cart.php">CART</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-warning my-2 my-sm-0 ml-2" type="submit"
+      formaction="logout.php">SIGN OUT</button>
     </form>
+
+    <div class="form-inline my-2 my-lg-0 ml-3">
+      <a href="cart.php" style="color:#ffffff">
+        <i class="bi bi-cart4" style="font-size:30px;"></i>
+        <?php 
+          echo (isset($_SESSION['cart_items']) && count($_SESSION['cart_items'])) > 0 ? count($_SESSION['cart_items']):'';
+        ?>
+      </a>
+    </div>
   </div>
 </nav>
+
+<div class="slideshow">
+  <img src="./images/slide1.jpg" alt="slide-image" class="slideimg">
+  <img src="./images/slide2.png" alt="slide-image" class="slideimg">
+  <img src="./images/slide3.jpg" alt="slide-image" class="slideimg">
+  <img src="./images/slide4.png" alt="slide-image" class="slideimg">
+</div>
 
 
 <div class="container mt-100">
@@ -66,7 +96,8 @@
                 <div class="card-body text-center">
                     <h4 class="card-title"><?php echo $row['model_name']; ?></h4>
                     <p class="text-muted">₹<?php echo $row['price']; ?></p>
-                    <a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">View Products</a>
+                    <a class="btn btn-outline-primary btn-sm" name="button1"
+                    href="<?php echo 'product-page.php?pid='.$row['pro_id']; ?>" data-abc="true">View Products</a>
                 </div>
             </div>
         </div>
@@ -75,5 +106,26 @@
         ?>
     </div>
 </div>
+
+<script>
+
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("slideimg");
+            for(i=0;i<x.length;i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if(myIndex > x.length) {
+                myIndex = 1;
+            }
+            x[myIndex-1].style.display = "block";
+            setTimeout(carousel, 4000);
+        }
+
+    </script>
 </body>
 </html>

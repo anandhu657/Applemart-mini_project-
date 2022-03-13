@@ -1,11 +1,75 @@
 <?php
 
     require_once('../private/initialize.php');
-    require_once('../private/shared_folder/navbar.php');
+    require_once('../private/shared_folder/cart_header.php');
 
     session_start();
 
     $uid = $_SESSION['user_id'];
+
+    
+    if(count($_GET) > 0){
+
+        if(isset($_GET['pid'])){
+            $id = $_GET['pid'];
+            $rows = find_product_by_id($id);
+        }
+    }
+    else{
+        echo "Oops 404 Error found";
+    }
+
+
+    if(isset($_POST['add_to_cart']) && $_POST['add_to_cart'] == 'add to cart')
+    {
+        $productID = intval($_POST['product_id']);
+        $productQty = intval($_POST['product_qty']);
+        
+        $sql = find_product_by_id($productID);
+
+        
+        $fetchProduct = $sql -> fetch_assoc();
+
+        $calculateTotalPrice = number_format($productQty * $fetchProduct['price'],2);
+        
+        $cartArray = [
+            'product_id' =>$productID,
+            'qty' => $productQty,
+            'product_name' =>$fetchProduct['model_name'],
+            'product_price' => $fetchProduct['price'],
+            'total_price' => $calculateTotalPrice,
+            'product_img' =>$fetchProduct['image']
+        ];
+        
+        if(isset($_SESSION['cart_items']) && !empty($_SESSION['cart_items']))
+        {
+            $productIDs = [];
+            foreach($_SESSION['cart_items'][$uid] as $cartKey => $cartItem)
+            {
+                $productIDs[] = $cartItem['product_id'];
+                if($cartItem['product_id'] == $productID)
+                {
+                    $_SESSION['cart_items'][$uid][$cartKey]['qty'] = $productQty;
+                    $_SESSION['cart_items'][$uid][$cartKey]['total_price'] = $calculateTotalPrice;
+                    break;
+                }
+            }
+
+            if(!in_array($productID,$productIDs))
+            {
+                $_SESSION['cart_items'][$uid][]= $cartArray;
+            }
+
+            $successMsg = true;
+            
+        }
+        else
+        {
+            $_SESSION['cart_items'][$uid][]= $cartArray;
+            $successMsg = true;
+        }
+
+    }
 
 ?>
 
@@ -19,27 +83,17 @@
     <link rel="stylesheet" href="css/product.css">
 </head>
 <body>
-    <?php
-        if(count($_GET) > 0){
-            if(isset($_GET['image'])){
-                $name = $_GET['image'];
-                $rows = find_product_by_name($name);
-            }
 
-            if(isset($_GET['button'])){
-                $name = $_GET['search'];
-                $rows = find_product_by_name($name);
-            }
-
-            if(isset($_GET['button1'])){
-                $id = $_GET['search'];
-                $rows = find_product_by_id($id);
-            }
-        }
-        else{
-            echo "Oops 404 Error found";
-        }
-    ?>
+    <?php if(isset($successMsg) && $successMsg == true){?>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <?php echo $fetchProduct['model_name']?> is added to cart. <a href="cart.php" class="alert-link">View Cart</a>
+                </div>
+            </div>
+        </div>
+    <?php }?>
     
     <?php 
     foreach($rows as $row) : 
@@ -63,12 +117,11 @@
                     <strong>FREE DELIVERY</strong>
                 </div>
                 <div class="price-button">
-                    <form action="form.php">
-                        <input type="hidden" value="<?php echo $row['model_name']; ?>">
-                        <button value="<?php echo $row['pro_id']; ?>" 
-                        name="button">BUY</button>
-                        <!-- <button name="button1" class="cart" value="<?php echo $row['pro_id']; ?>"
-                        formaction="<?php echo 'cart.php'; ?>">Add to cart</button> -->
+                    <form  method="POST">
+                        <input type="number" name="product_qty" id="productQty" placeholder="Quantity" min="1" max="1000" value="1">
+                        <input type="hidden" name="product_id" value="<?php echo $row['pro_id']; ?>">
+                        <button type="submit" name="buy" value="buy" formaction="checkout.php">BUY</button>
+                        <button type="submit" name="add_to_cart" value="add to cart">Add to Cart</button>
                     </form>
                 </div>
             </div>
@@ -107,14 +160,12 @@
             </div>
         </div>
     </div>
-    <div class="border">
-        <hr>
-    </div>
+    
     <?php endforeach; ?>
 
     <?php
 
-        require_once('../private/shared_folder/footer.php');
+        require_once('../private/shared_folder/cart_footer.php');
         
     ?>
 </body>

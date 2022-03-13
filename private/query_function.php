@@ -1,14 +1,15 @@
 <?php
 
-function find_product_by_name($name) {
-    global $db;
+// function find_product_by_name($name) {
+//     global $db;
 
-    $sql = "SELECT * FROM product ";
-    $sql .= "WHERE model_name LIKE ";
-    $sql .= "'". $name . "'";
-    $result = mysqli_query($db, $sql);
-    return $result;
-}
+//     $sql = "SELECT * FROM product ";
+//     $sql .= "WHERE model_name LIKE ";
+//     $sql .= "'". $name . "'";
+//     $result = mysqli_query($db, $sql);
+//     return $result;
+// }
+
 
 function find_product_by_id($id) {
     global $db;

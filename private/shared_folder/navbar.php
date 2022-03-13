@@ -1,7 +1,7 @@
 <html>
 <head>
 <style>
-.navbar{
+.navbars{
     position: sticky;
     top: 0;
     left: 0; 
@@ -39,7 +39,7 @@ li a:hover:not(.active) {
 </head>
 <body>
 
-<div class="navbar">
+<div class="navbars">
     <ul>
     <li><a href="#" onclick="myFunction()">Home</a></li>
     <!-- <li><a href="#news">News</a></li> -->

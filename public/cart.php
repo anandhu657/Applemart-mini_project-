@@ -1,84 +1,100 @@
-<?php
-
-    require_once('../private/initialize.php');
-    require_once('../private/shared_folder/navbar.php');
+<?php 
     session_start();
+    require_once('../private/initialize.php');    
+    require_once('../private/helpers.php');  
+
     $uid = $_SESSION['user_id'];
 
-    if(isset($_GET['button1'])){
-        $pro_id = $_GET['button1'];
-
-        $query1 = "SELECT pro_id, model_name, price FROM product WHERE pro_id = '$pro_id'";
-        $result1 = mysqli_query($db, $query1);
-        $sub = [];
-        $i = 0;
-        while($row1 = mysqli_fetch_array($result1)){
-            $sub['pro_id'] = $row1['pro_id'];
-            $sub['model_name'] = $row1['model_name'];
-            $sub['price'] = $row1['price'];
-        }
-
-        $query = "SELECT pro_name FROM cart WHERE user_id = '$uid'";
-        $result = mysqli_query($db, $query);
-        $row = mysqli_fetch_array($result);
-            if($sub['model_name'] != $row['pro_name']){
-        
-                $result2 = insert_product_cart($sub, $uid);
-            
-        
-            }
-        
-        
-            $query3 = "SELECT * FROM cart WHERE user_id = '$uid'";
-            $result3 = mysqli_query($db, $query3);
-
-            if(mysqli_num_rows($result3) > 0) {
-
-?>
-<html>
-    <head>
-        <title>Cart</title>
-    </head>
-    <style>
-        table, th, td{
-            border: 1px solid black;
-            padding: 10px;
-        }
-        table{
-            border-collapse: collapse;
-        }
-    </style>
-<body>
-<table>
-    <tr>
-        <th>Model name</th>
-        <th>Price</th>
-    </tr>
-
-<?php
-                $i = 0;
-                while($row = mysqli_fetch_array($result3)) {
-?>
-
-<tr>
-<td>
-    <form action="#">
-    <input type="hidden" name="search" value="<?php echo $row['pro_id']; ?>">
-    <button formaction="product-page.php" name="button1" ><a><?php echo $row['pro_name']; ?></a></button></td>
-<td><?php echo $row['pro_price']; ?></td>
-<td><a href="<?php echo 'delete_cart.php?cid='.$row['cid']; ?>">Delete</a></td>
-</tr>
-
-
-
-
-<?php
-    $i++;
+    if(isset($_GET['action'],$_GET['item']) && $_GET['action'] == 'remove')
+    {
+        unset($_SESSION['cart_items'][$uid][$_GET['item']]);
+        header('location:cart.php');
+        exit();
     }
-    }else{
-        echo 'error';
-    }
-    
-}
+	
+	$pageTitle = 'PHP Shopping cart - Add to cart using Session';
+	$metaDesc = 'Demo PHP Shopping cart - Add to cart using Session';
+	
+    include('../private/shared_folder/cart_header.php');
+
+    // pre($_SESSION);
 ?>
-</table>
+<div class="row">
+    <div class="col-md-12">
+        <?php if(empty($_SESSION['cart_items'][$uid])){?>
+        <table class="table">
+            <tr>
+                <td>
+                    <p>Your cart is empty</p>
+                </td>
+            </tr>
+        </table>
+        <?php }?>
+        <?php if(isset($_SESSION['cart_items'][$uid]) && count($_SESSION['cart_items'][$uid]) > 0){?>
+        <table class="table">
+           <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                    $totalCounter = 0;
+                    $itemCounter = 0;
+                    foreach($_SESSION['cart_items'][$uid] as $key => $item){
+
+                    //  $imgUrl = PRODUCT_IMG_URL.str_replace(' ','-',strtolower($item['product_name']))."/".$item['product_img'];   
+                    
+                    $total = $item['product_price'] * $item['qty'];
+                    $totalCounter+= $total;
+                    $itemCounter+=$item['qty'];
+                    ?>
+                    <tr>
+                        <td>
+                            <img src="<?php echo $imgUrl; ?>" class="rounded img-thumbnail mr-2" style="width:60px;"><?php echo $item['product_name'];?>
+                            
+                            <a href="cart.php?action=remove&item=<?php echo $key?>" class="text-danger">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
+
+                        </td>
+                        <td>
+                            $<?php echo $item['product_price'];?>
+                        </td>
+                        <td>
+                            <input type="number" name="" class="cart-qty-single" data-item-id="<?php echo $key?>" value="<?php echo $item['qty'];?>" min="1" max="1000" >
+                        </td>
+                        <td>
+                            <?php echo $total;?>
+                        </td>
+                    </tr>
+                <?php }?>
+                <tr class="border-top border-bottom">
+                    <td><button class="btn btn-danger btn-sm" id="emptyCart">Clear Cart</button></td>
+                    <td></td>
+                    <td>
+                        <strong>
+                            <?php 
+                                echo ($itemCounter==1)?$itemCounter.' item':$itemCounter.' items'; ?>
+                        </strong>
+                    </td>
+                    <td><strong>$<?php echo $totalCounter;?></strong></td>
+                </tr> 
+                </tr>
+            </tbody> 
+        </table>
+        <div class="row">
+            <div class="col-md-11">
+				<a href="checkout.php">
+					<button class="btn btn-primary btn-lg float-right">Checkout</button>
+				</a>
+            </div>
+        </div>
+        
+        <?php }?>
+    </div>
+</div>
+<?php include('../private/shared_folder/cart_footer.php');?>

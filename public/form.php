@@ -20,7 +20,7 @@
 </head>
 <body>
     <?php
-        $pid = $_GET['button'];
+        $pid = $_POST['button'];
         $results = find_product_by_id($pid);
         $rows = mysqli_fetch_array($results);
 

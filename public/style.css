@@ -82,6 +82,30 @@ a {
 }
 
 
+.slideshow{
+    position: relative;
+    top: -10px;
+    width: 100%;
+    height: 65vh;
+    z-index: -1;
+}
+
+.slideshow::before{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 65vh;
+    background: linear-gradient(to top, rgba(0,0,0,0.60)50%, rgba(0,0,0,0.60)50%);
+    content: '';
+    
+}
+
+.slideimg{
+    width: 100%;
+    height: 65vh;
+    display: none;
+}
+
 
 
 

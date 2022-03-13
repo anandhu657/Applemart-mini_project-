@@ -55,7 +55,7 @@ body{
 }
 
 .price-button button{
-    margin: 80px 0 80px 0;
+    margin: 25px 0 25px 0;
     width: 155px;
     height: 36px;
     color: white;
@@ -70,6 +70,7 @@ body{
 .cart{
     position: absolute;
     display: block;
+    top: 37%;
 }
 
 .price-button button:hover{

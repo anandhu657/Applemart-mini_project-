@@ -13,7 +13,11 @@
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['email'] = $row['email'];
             $_SESSION['username'] = $row['username'];
+            if(!(isset($_SESSION['cart_items']))){
+                $_SESSION['cart_items'] = [];
+            }
             header("Location: main.php?");
+            
         }
         elseif($email == 'admin@gmail.com' && $pass == 'pass'){
             header("Location: admin/admin.php");
