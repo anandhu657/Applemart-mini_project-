@@ -16,6 +16,7 @@
         $sub['memory'] = $_POST['memory'];
         $sub['camera'] = $_POST['camera'];
         $sub['fcamera'] = $_POST['fcamera'];
+        $sub['qty'] = $_POST['qty'];
 
         if($_FILES["image"]["error"] === 4) {
             echo
@@ -51,7 +52,8 @@
                 if($result) {
                     echo
                     "<center><h1> PRODUCT ADDED SUCCESSFULLY </h1>
-                    <a href='add.php'>Add New</a></center>"
+                    <a href='add.php'>Add New</a>
+                    <a href='admin.php'>go back</a></center>"
                     ;
                 }
                 else{

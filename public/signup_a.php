@@ -16,7 +16,9 @@
     elseif(isset($_POST['submit'])){
         $query = "INSERT INTO register(username, email, phone, passwords, address) VALUES ('$fname', '$email', '$phn', 'md5($pass1)','$address')";
         $sql = mysqli_query($db, $query) or die("Could Not Perform the query");
-        header("Location: ../index.php?status=success");
+        echo "<script> alert('Signup success')
+            window.location.href = '../index.php'</script>";
+        // header("Location: ../index.php?status=success");
     }
     else{
         echo "Error. Please try again";

@@ -2,7 +2,9 @@
 
     require_once('../../private/initialize.php');
 
-    $sql = "DELETE FROM product WHERE pro_id='".$_GET['id']."'";
+    $pro_id = $_GET['id'];
+
+    $sql = "UPDATE product SET status = 1 WHERE pro_id = '$pro_id'";
     if(mysqli_query($db, $sql)){
         header("Location: manage.php");
     }

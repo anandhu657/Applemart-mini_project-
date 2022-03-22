@@ -32,7 +32,7 @@
                 <a href="cart.php" style="color:#ffffff">
                     <i class="bi bi-cart4" style="font-size:30px;"></i>
                     <?php 
-                        echo (isset($_SESSION['cart_items']) && count($_SESSION['cart_items'])) > 0 ? count($_SESSION['cart_items']):'';
+                        // echo (isset($_SESSION['cart_items']) && count($_SESSION['cart_items'])) > 0 ? count($_SESSION['cart_items']):'';
                     ?>
                 </a>
             </div>

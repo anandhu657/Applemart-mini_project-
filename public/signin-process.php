@@ -20,10 +20,12 @@
             
         }
         elseif($email == 'admin@gmail.com' && $pass == 'pass'){
-            header("Location: admin/admin.php");
+            header("Location: admin/admin.php");            
         }
         else{
-            header("Location: ../index.php");
+            // header("Location: ../index.php");
+            echo "<script> window.alert('Invalid username or password')
+            window.location.href = '../index.php'</script>";
         }
     }
 

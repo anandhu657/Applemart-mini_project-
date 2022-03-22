@@ -29,6 +29,9 @@
                     <input type="text" placeholder="Front Camera" name="fcamera" required>
                 </div>
                 <div class="input-field">
+                    <input type="Number" placeholder="Quantity" name="qty" required>
+                </div>
+                <div class="input-field">
                     <label for="image">Image:</label>
                     <input type="file" accept=".png, .jpeg, .jpg" name="image" required>
                 </div>
@@ -36,7 +39,7 @@
                     <input type="submit" value="submit" name="submit">
                 </div>
                 <div class="home-link">
-                    <a href="../main.php">Go to Home</a>
+                    <!-- <a href="../main.php">Go to Home</a> -->
                     <a href="admin.php">Go Back</a>
                 </div>
             </form>

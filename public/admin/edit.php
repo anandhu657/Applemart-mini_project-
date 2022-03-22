@@ -20,6 +20,7 @@
         $sub['memory'] = $_POST['memory'];
         $sub['camera'] = $_POST['camera'];
         $sub['fcamera'] = $_POST['fcamera'];
+        $sub['qty'] = $_POST['qty'];
 
         if($_FILES["image"]["error"] === 4) {
             echo
@@ -114,6 +115,9 @@
             
             front_cam: <input type="text" name="fcamera"
                     value="<?php echo $row['front_camera']; ?>"> <br>
+
+            Quantity: <input type="number" name="qty"
+                    value="<?php echo $row['qty']; ?>"> <br>
                 
             image: <input type="file" accept=".png, .jpeg, .jpg" name="image"> <br><br>
 

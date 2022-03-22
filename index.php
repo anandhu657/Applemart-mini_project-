@@ -16,7 +16,7 @@
             <form action="./public/signin-process.php" method="POST" class="signin-form" enctype="multipart/form-data">
                 <input type="email" name="email" placeholder="Username"><br><br>
                 <input type="password" name="pass" placeholder="Password"><br>
-                <a href="#" class="forgot-link">Forgotten password?</a>
+                <!-- <a href="#" class="forgot-link">Forgotten password?</a> -->
                 <input type="submit" name="submit" value="login" class="form-submit">
                 <hr>
                 <button class="form-create" formaction="public/signup.php">Create New Account</button>

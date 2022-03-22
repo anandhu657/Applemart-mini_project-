@@ -30,43 +30,51 @@
         
         $fetchProduct = $sql -> fetch_assoc();
 
-        $calculateTotalPrice = number_format($productQty * $fetchProduct['price'],2);
-        
-        $cartArray = [
-            'product_id' =>$productID,
-            'qty' => $productQty,
-            'product_name' =>$fetchProduct['model_name'],
-            'product_price' => $fetchProduct['price'],
-            'total_price' => $calculateTotalPrice,
-            'product_img' =>$fetchProduct['image']
-        ];
-        
-        if(isset($_SESSION['cart_items']) && !empty($_SESSION['cart_items']))
-        {
-            $productIDs = [];
-            foreach($_SESSION['cart_items'][$uid] as $cartKey => $cartItem)
-            {
-                $productIDs[] = $cartItem['product_id'];
-                if($cartItem['product_id'] == $productID)
-                {
-                    $_SESSION['cart_items'][$uid][$cartKey]['qty'] = $productQty;
-                    $_SESSION['cart_items'][$uid][$cartKey]['total_price'] = $calculateTotalPrice;
-                    break;
-                }
-            }
+        $qty = $fetchProduct['qty'];
 
-            if(!in_array($productID,$productIDs))
-            {
-                $_SESSION['cart_items'][$uid][]= $cartArray;
-            }
-
-            $successMsg = true;
-            
+        if($productQty > $qty){
+            echo "<script>window.alert('Only $qty quantity of products is available now')</script>";
         }
         else
         {
-            $_SESSION['cart_items'][$uid][]= $cartArray;
-            $successMsg = true;
+            $calculateTotalPrice = number_format($productQty * $fetchProduct['price'],2);
+            
+            $cartArray = [
+                'product_id' =>$productID,
+                'qty' => $productQty,
+                'product_name' =>$fetchProduct['model_name'],
+                'product_price' => $fetchProduct['price'],
+                'total_price' => $calculateTotalPrice,
+                'product_img' =>$fetchProduct['image']
+            ];
+            
+            if(isset($_SESSION['cart_items']) && !empty($_SESSION['cart_items']))
+            {
+                $productIDs = [];
+                foreach($_SESSION['cart_items'][$uid] as $cartKey => $cartItem)
+                {
+                    $productIDs[] = $cartItem['product_id'];
+                    if($cartItem['product_id'] == $productID)
+                    {
+                        $_SESSION['cart_items'][$uid][$cartKey]['qty'] = $productQty;
+                        $_SESSION['cart_items'][$uid][$cartKey]['total_price'] = $calculateTotalPrice;
+                        break;
+                    }
+                }
+
+                if(!in_array($productID,$productIDs))
+                {
+                    $_SESSION['cart_items'][$uid][]= $cartArray;
+                }
+
+                $successMsg = true;
+                
+            }
+            else
+            {
+                $_SESSION['cart_items'][$uid][]= $cartArray;
+                $successMsg = true;
+            }
         }
 
     }
@@ -93,7 +101,10 @@
                 </div>
             </div>
         </div>
-    <?php }?>
+
+    <?php 
+    }
+    ?>
     
     <?php 
     foreach($rows as $row) : 
@@ -118,7 +129,7 @@
                 </div>
                 <div class="price-button">
                     <form  method="POST">
-                        <input type="number" name="product_qty" id="productQty" placeholder="Quantity" min="1" max="1000" value="1">
+                        Quantity: <input type="number" name="product_qty" id="productQty" placeholder="Quantity" min="1" max="1000" value="1">
                         <input type="hidden" name="product_id" value="<?php echo $row['pro_id']; ?>">
                         <button type="submit" name="buy" value="buy" formaction="checkout.php">BUY</button>
                         <button type="submit" name="add_to_cart" value="add to cart">Add to Cart</button>
@@ -146,7 +157,7 @@
                     </tr>
                     <tr>
                         <th>Memory</th>
-                        <td><?php echo $row['memory']; ?> GB</td>
+                        <td><?php echo $row['memory']; ?> ROM</td>
                     </tr>
                     <tr>
                         <th>Camera</th>
@@ -154,7 +165,7 @@
                     </tr>
                     <tr>
                         <th>Front camera</th>
-                        <td><?php echo $row['front_camera']; ?></td>
+                        <td><?php echo $row['front_camera']; ?> Front</td>
                     </tr>
                 </table>
             </div>

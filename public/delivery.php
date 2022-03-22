@@ -46,14 +46,35 @@
         $sub['type'] = $_POST['type'];
         $sub['alt_phn'] = $_POST['alt'];
         $sub['landmark'] = $_POST['land'];
-        $sub['pro_id'] = $_GET['pro_id'];
 
 
         $result = insert_delivery_details($sub);
 
 
 
-        if($result) {
+        
+        if($result){
+            if(isset($_SESSION['pid'])){
+                $cus_id = mysqli_insert_id($db);
+                $quantity = $_SESSION['qty'];
+                $pro_id = $_SESSION['pid'];
+                $price = $_SESSION['price'];
+                $date = strtotime("+7 day");
+                $date = date('Y-m-d', $date);
+                $place_order = insert_order_details($cus_id, $pro_id, $date, $quantity, $price);
+                $update_qty = update_quantity($pro_id, $quantity);
+            }else{
+                $cus_id = mysqli_insert_id($db);
+                foreach ($_SESSION['cart_items'][$uid] as $key => $cartItem) {
+                    $quantity = $cartItem['qty'];
+                    $pro_id = $cartItem['product_id'];
+                    $price = $cartItem['total_price'];
+                    $date = strtotime("+7 day");
+                    $date = date('Y-m-d', $date);
+                    $place_order = insert_order_details($cus_id, $pro_id, $date, $quantity, $price);
+                    $update_qty = update_quantity($pro_id, $quantity);
+                }
+            }               
     
         ?>  
             <h1>Thank You</h1>
